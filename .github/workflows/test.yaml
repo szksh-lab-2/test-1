@@ -1,26 +1,8 @@
----
-name: test
 on: pull_request
-permissions: {}
 jobs:
-  test:
-    if: github.triggering_actor == 'suzuki-shunsuke'
+  hello:
     runs-on: ubuntu-24.04
     permissions: {}
     timeout-minutes: 10
     steps:
-      # - name: update branch
-      #   run: echo "$PAYLOAD" > file.txt
-      #   env:
-      #     PAYLOAD: |
-      #       { "op": "update_branch", "pr": ${{github.event.pull_request.number}} }
-      - name: add a label
-        run: echo "$PAYLOAD" > file.txt
-        env:
-          PAYLOAD: |
-            { "op": "add_label", "label": "foo", "pr": ${{github.event.pull_request.number}} }
-      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
-        with:
-          name: securefix
-          path: |
-            file.txt
+      - uses: szksh-lab-2/test-github-action/.github/actions/bar@test-self-repo-syntax
